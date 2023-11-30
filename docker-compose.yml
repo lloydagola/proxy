@@ -1,0 +1,31 @@
+version: '3'
+
+services: 
+  webserver:
+    image: nginx:mainline-alpine
+    container_name: proxy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./:/var/www/html
+      - ./nginx-conf:/etc/nginx/conf.d
+      - /etc/letsencrypt:/etc/letsencrypt
+      - /var/lib/letsencrypt:/var/lib/letsencrypt
+      - dhparam:/etc/ssl/certs
+
+    depends_on:
+      - portfolio
+
+    networks:
+      - app-network
+  
+volumes:
+  dhparam:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/lloyd/apps/dhparam/
+      o: bind
+ 
