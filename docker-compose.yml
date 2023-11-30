@@ -14,18 +14,41 @@ services:
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
       - dhparam:/etc/ssl/certs
-
     depends_on:
       - portfolio
-
     networks:
       - app-network
+
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
+      - web-root:/var/www/html
+    depends_on:
+      - webserver
+    command: certonly --webroot --webroot-path=/var/www/html --email lloyd@lloydagola.com --agree-tos --no-eff-email --staging -d lloydagola.com  -d www.lloydagola.com 
+
+  
   
 volumes:
+  certbot-etc:
+  certbot-var:
+  web-root:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/lloyd/apps/build
+      o: bind
   dhparam:
     driver: local
     driver_opts:
       type: none
       device: /home/lloyd/apps/dhparam/
       o: bind
+
+networks:
+  app-network:
+    driver: bridge  
  
