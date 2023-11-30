@@ -46,7 +46,8 @@ volumes:
       device: /home/lloyd/apps/proxy/dhparam/
       o: bind
 
+
 networks:
   app-network:
-    driver: bridge  
+    external: true
  
