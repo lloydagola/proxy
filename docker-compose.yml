@@ -11,8 +11,8 @@ services:
     volumes:
       - ./:/var/www/html
       - ./nginx-conf:/etc/nginx/conf.d
-      - /etc/letsencrypt:/etc/letsencrypt
-      - /var/lib/letsencrypt:/var/lib/letsencrypt
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
       - dhparam:/etc/ssl/certs
 
     depends_on:
