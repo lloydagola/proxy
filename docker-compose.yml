@@ -43,7 +43,7 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/lloyd/apps/dhparam/
+      device: /home/lloyd/apps/proxy/dhparam/
       o: bind
 
 networks:
