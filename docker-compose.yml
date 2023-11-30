@@ -37,7 +37,7 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/lloyd/apps/build
+      device: /home/lloyd/apps/portfolio/build
       o: bind
   dhparam:
     driver: local
