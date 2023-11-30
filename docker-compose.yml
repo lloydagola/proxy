@@ -9,7 +9,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./:/var/www/html
+      - web-root:/var/www/html
       - ./nginx-conf:/etc/nginx/conf.d
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
@@ -37,7 +37,7 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/lloyd/apps/portfolio/build/
+      device: var/www/html
       o: bind
   dhparam:
     driver: local
