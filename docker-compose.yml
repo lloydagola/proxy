@@ -26,7 +26,7 @@ services:
       - web-root:/var/www/html
     depends_on:
       - proxy_server
-    command: certonly --webroot --webroot-path=/var/www/html --email lloyd@lloydagola.com --agree-tos --no-eff-email --force-recreate -d lloydagola.com  -d www.lloydagola.com 
+    command: certonly --webroot --webroot-path=/var/www/html --email lloyd@lloydagola.com --agree-tos --no-eff-email --staging -d lloydagola.com  -d www.lloydagola.com 
 
   
   
